@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>刑法分則 — 臺北大學法律營</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.pumpkin.min.css" />
+
+  <style>
+    h1 { font-family: 'Noto Serif TC', serif; }
+    [data-theme="light"] .label-dark  { display: none; }
+    [data-theme="dark"]  .label-light { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <hgroup>
+        <p>臺北大學第14屆夏令營 · 教案三</p>
+        <h1>刑法分則</h1>
+        <p>課程資料彙整 — 2023 年 7 月</p>
+      </hgroup>
+      <button id="themeBtn">
+        <span class="label-light">☀️ 亮色</span>
+        <span class="label-dark">🌙 暗色</span>
+      </button>
+    </header>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>簡報 (2023/07/11)</td>
+          <td><a href="slides0711.pdf" target="_blank" rel="noopener">開啟 →</a></td>
+        </tr>
+        <tr>
+          <td>最高法院 110 台上 30</td>
+          <td><a href="https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&id=TPSM,110%2c%e5%8f%b0%e4%b8%8a%2c30%2c20211007%2c1" target="_blank" rel="noopener">開啟 →</a></td>
+        </tr>
+        <tr>
+          <td>憲法法庭 112 憲判 8</td>
+          <td><a href="https://cons.judicial.gov.tw/docdata.aspx?fid=38&id=340775" target="_blank" rel="noopener">開啟 →</a></td>
+        </tr>
+        <tr>
+          <td>南高 112 上易 177 刑</td>
+          <td><a href="TNH-112上易177刑.pdf" target="_blank" rel="noopener">開啟 →</a></td>
+        </tr>
+        <tr>
+          <td>補充資料 (2023/07/09)</td>
+          <td><a href="more0709.pdf" target="_blank" rel="noopener">開啟 →</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <small>最後更新：2023-07-11　｜　版面：<a href="https://picocss.com" target="_blank" rel="noopener">Pico CSS</a></small>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var btn  = document.getElementById('themeBtn');
+      var html = document.documentElement;
+
+      function apply(theme) { html.setAttribute('data-theme', theme); }
+
+      var stored = localStorage.getItem('theme');
+      apply(stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+      btn.addEventListener('click', function () {
+        var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(next);
+        localStorage.setItem('theme', next);
+      });
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) apply(e.matches ? 'dark' : 'light');
+      });
+    })();
+  </script>
+</body>
+</html>
